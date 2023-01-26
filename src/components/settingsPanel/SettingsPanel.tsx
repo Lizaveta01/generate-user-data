@@ -1,12 +1,12 @@
 import InputSeed from './inputSeed/InputSeed';
-import BasicSelect from './select/Select';
-import SliderMistakes from './slider/Slider';
-import { Wrapper } from './ToolBar.styled';
+import SelectRegion from './selectRegion/SelectRegion';
+import { Wrapper } from './SettingsPanel.styled';
+import SliderMistakes from './SliderMistakes/SliderMistakes';
 
 const SettingsPanel = () => {
     return (
         <Wrapper>
-            <BasicSelect />
+            <SelectRegion />
             <SliderMistakes />
             <InputSeed />
         </Wrapper>

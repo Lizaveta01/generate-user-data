@@ -15,7 +15,7 @@ type props = {
 
 const UserTable = ({ data }: props) => {
     return (
-        <TableContainer component={Paper} className="table__container">
+        <TableContainer component={Paper}>
             <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>
@@ -31,13 +31,8 @@ const UserTable = ({ data }: props) => {
                         <StyledTableRow key={index} className="table__row">
                             <StyledTableCell align="center">{index + 1}</StyledTableCell>
                             <StyledTableCell align="center">{item.id}</StyledTableCell>
-                            <StyledTableCell align="center">
-                                {item.name.first} {item.name.last}
-                            </StyledTableCell>
-                            <StyledTableCell align="center">
-                                {item.location.country} {item.location.city}{' '}
-                                {item.location.street.name} {item.location.street.number}
-                            </StyledTableCell>
+                            <StyledTableCell align="center">{item.name}</StyledTableCell>
+                            <StyledTableCell align="center">{item.location}</StyledTableCell>
                             <StyledTableCell align="center">{item.phone}</StyledTableCell>
                         </StyledTableRow>
                     ))}

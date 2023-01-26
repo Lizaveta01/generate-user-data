@@ -1,15 +1,16 @@
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { useContext } from 'react';
 
+import { ApplicationContext } from '../../../context/context';
 import { Wrapper } from './InputSeed.styled';
 
 const InputSeed = () => {
-    const [seed, setSeed] = useState(0);
+    const { seed, onSetSeed } = useContext(ApplicationContext);
 
     const getSeed = () => {
         const newSeed = Math.random();
-        setSeed(newSeed);
+        onSetSeed(newSeed);
     };
 
     return (
@@ -19,7 +20,7 @@ const InputSeed = () => {
                 type="number"
                 size="small"
                 value={seed}
-                onChange={(value) => setSeed(value as unknown as number)}
+                onChange={(value) => onSetSeed(+value.target.value)}
             />
             <Button variant="outlined" onClick={getSeed}>
                 Random

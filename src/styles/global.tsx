@@ -52,6 +52,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-family: 'Helvetica', 'Arial', sans-serif;
     padding: 20px;
+    @media screen and (max-width: 500px) {
+      padding: 20px 0px;
+    }
 
   }
   input[type="text"],

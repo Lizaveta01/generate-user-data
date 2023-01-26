@@ -7,4 +7,7 @@ export const Wrapper = styled.div`
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
+    @media screen and (max-width: 500px) {
+        width: 280px;
+    }
 `;

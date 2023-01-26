@@ -5,28 +5,30 @@ import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
-import { useState } from 'react';
+import { useContext } from 'react';
+
+import { ApplicationContext } from '../../../context/context';
 
 const Input = styled(MuiInput)`
     width: 42px;
 `;
 
 const SliderMistakes = () => {
-    const [value, setValue] = useState<number | string | Array<number | string>>(0);
+    const { mistakes, onSetMistakes } = useContext(ApplicationContext);
 
     const handleSliderChange = (event: Event, newValue: number | number[]) => {
-        setValue(newValue);
+        onSetMistakes(newValue);
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value === '' ? '' : Number(event.target.value));
+        onSetMistakes(event.target.value === '' ? 0 : Number(event.target.value));
     };
 
     const handleBlur = () => {
-        if (value < 0) {
-            setValue(0);
-        } else if (value > 1000) {
-            setValue(1000);
+        if (mistakes < 0) {
+            onSetMistakes(0);
+        } else if (mistakes > 1000) {
+            onSetMistakes(1000);
         }
     };
 
@@ -38,7 +40,7 @@ const SliderMistakes = () => {
             <Grid container spacing={2} alignItems="center">
                 <Grid item xs>
                     <Slider
-                        value={typeof value === 'number' ? value : 0}
+                        value={typeof mistakes === 'number' ? mistakes : 0}
                         onChange={handleSliderChange}
                         aria-labelledby="input-slider"
                         step={1}
@@ -47,7 +49,7 @@ const SliderMistakes = () => {
                 </Grid>
                 <Grid item>
                     <Input
-                        value={value}
+                        value={mistakes}
                         size="small"
                         onChange={handleInputChange}
                         onBlur={handleBlur}

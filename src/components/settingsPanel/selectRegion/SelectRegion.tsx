@@ -4,12 +4,15 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import * as React from 'react';
+import { useContext } from 'react';
 
-const BasicSelect = () => {
-    const [region, setRegion] = React.useState('Canada');
+import { ApplicationContext } from '../../../context/context';
+
+const SelectRegion = () => {
+    const { region, onSetRegion } = useContext(ApplicationContext);
 
     const handleChange = (event: SelectChangeEvent) => {
-        setRegion(event.target.value as string);
+        onSetRegion(event.target.value as string);
     };
 
     return (
@@ -23,13 +26,13 @@ const BasicSelect = () => {
                     label="Region"
                     onChange={handleChange}
                 >
-                    <MenuItem value="Canada">Canada</MenuItem>
-                    <MenuItem value="German">German</MenuItem>
-                    <MenuItem value="Spain">Spain</MenuItem>
+                    <MenuItem value="ca">Canada</MenuItem>
+                    <MenuItem value="de">German</MenuItem>
+                    <MenuItem value="au">Australia</MenuItem>
                 </Select>
             </FormControl>
         </Box>
     );
 };
 
-export default BasicSelect;
+export default SelectRegion;
